@@ -554,7 +554,7 @@ button {
 
 .header__social {
   display: flex;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   align-items: center;
 }
 
@@ -562,17 +562,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: var(--p-dark);
-  color: white;
+  background: #E9F2EE;
+  color: var(--g-deep);
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .header__social-link:hover {
-  background: var(--p-deep);
+  background: #d4e5df;
   transform: translateY(-2px);
 }
 
