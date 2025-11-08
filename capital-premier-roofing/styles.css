@@ -552,6 +552,35 @@ button {
   align-items: center;
 }
 
+.header__social {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+}
+
+.header__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--p-dark);
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header__social-link:hover {
+  background: var(--p-deep);
+  transform: translateY(-2px);
+}
+
+.header__social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
 .header__email-btn {
   border: none !important;
   background: transparent !important;
