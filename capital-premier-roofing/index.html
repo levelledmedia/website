@@ -8,77 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style id="dark-mode-init">
-    html.dark-mode-init .card,
-    html.dark-mode-init .form-input,
-    html.dark-mode-init .btn--ghost-light {
-      background: #1A1A1A !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-      color: #F1F5F9 !important;
-    }
-    html.dark-mode-init .btn--ghost-light {
-      background: transparent !important;
-      border-color: rgba(255, 255, 255, 0.4) !important;
-      color: #fff !important;
-    }
-    html.dark-mode-init .header {
-      background: #121212 !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    }
-  </style>
-  <script>
-    // Apply default theme mode immediately before page renders to prevent flash
-    (function() {
-      const defaultTheme = 'light';
-      const businessName = 'Capital Premier Roofing Ltd';
-      const storageKey = 'darkMode_' + businessName.replace(/[^a-zA-Z0-9]/g, '_');
-
-      // Check if this is a preview (blob URL) - if so, always use the default theme
-      const isPreview = window.location.protocol === 'blob:';
-
-      let savedMode = localStorage.getItem(storageKey);
-
-      // For previews, clear any saved preference so you always see the configured default
-      if (isPreview && savedMode !== null) {
-        localStorage.removeItem(storageKey);
-        savedMode = null;
-      }
-
-      // Decide which mode to use
-      let useDarkMode = false;
-
-      if (savedMode !== null) {
-        // User has toggled before - use their saved preference
-        useDarkMode = (savedMode === 'enabled');
-      } else {
-        // No saved preference - use the configured default
-        useDarkMode = (defaultTheme === 'dark');
-        // Save the default so we know it's been initialized (unless it's a preview)
-        if (!isPreview) {
-          localStorage.setItem(storageKey, useDarkMode ? 'enabled' : 'disabled');
-        }
-      }
-
-      // Apply dark mode if needed
-      if (useDarkMode) {
-        document.documentElement.classList.add('dark-mode');
-        document.documentElement.classList.add('dark-mode-init');
-      }
-
-      // Add dark-mode class to body when it's available (for body.dark-mode CSS selectors)
-      if (useDarkMode) {
-        if (document.body) {
-          document.body.classList.add('dark-mode');
-        } else {
-          document.addEventListener('DOMContentLoaded', function() {
-            if (useDarkMode) {
-              document.body.classList.add('dark-mode');
-            }
-          });
-        }
-      }
-    })();
-  </script>
 </head>
 <body>
 
@@ -447,72 +376,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Past Projects - Carousel Version -->
-  <section class="section section--portfolio" id="work-carousel" style="display: none;">
-    <div class="container">
-      <div class="section__header">
-        <div>
-          <p class="h-eyebrow">SEE OUR WORK</p>
-          <h2 class="h2">Check out our landscaping projects</h2>
-        </div>
-        <div class="portfolio-nav">
-          <button class="portfolio-nav-btn portfolio-nav-btn--prev" id="portfolioPrev">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button class="portfolio-nav-btn portfolio-nav-btn--next" id="portfolioNext">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-carousel-wrapper">
-      <div class="portfolio-carousel">
-        <div class="portfolio-carousel-track" id="portfolioTrack">
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio1.jpg" alt="Portfolio project 1">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio2.jpg" alt="Portfolio project 2">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio3.jpg" alt="Portfolio project 3">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio4.jpg" alt="Portfolio project 4">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio5.jpg" alt="Portfolio project 5">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio6.jpg" alt="Portfolio project 6">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio7.jpg" alt="Portfolio project 7">
-          </div>
-          <div class="portfolio-carousel-slide">
-            <img src="./images/portfolio8.jpg" alt="Portfolio project 8">
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" id="lightboxClose">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    <img src="" alt="" class="lightbox__image" id="lightboxImage">
-  </div>
 
   <!-- Before/After Transformation -->
   <section class="section section--portfolio" id="work">
@@ -1060,107 +923,6 @@
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="section section--light" id="faq" style="display: none;">
-    <div class="container">
-      <div class="section__header section__header--center">
-        <div>
-          <p class="h-eyebrow">Frequently Asked Questions</p>
-          <h2 class="h2">More questions? We've got you.</h2>
-        </div>
-      </div>
-      <div class="faq-container">
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">What services does Capital Premier Roofing offer?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>Capital Premier Roofing offers a range of services including driveways, patios, fencing, drainage, and landscaping. We specialize in creating stunning outdoor spaces tailored to your needs.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">Where is Capital Premier Roofing located?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>Capital Premier Roofing is located at 15 Tomlinson Ave, Luton LU4 0QJ, UK. We serve the Luton area and surrounding regions.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">What is the guarantee on your services?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>We offer a 10-year guarantee on all our services, ensuring you have financial protection and peace of mind with your landscaping projects.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">Do you provide free quotations?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>Yes, we provide free quotations for all our services. Contact us to discuss your project and receive a personalized estimate.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">What types of paving do you specialize in?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>We specialize in various types of paving including block paving, slabbing, and concrete. Our team is skilled in creating beautiful and functional outdoor spaces.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">How long does a typical project take?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>The duration of a project varies based on its scope. However, we strive to complete most projects efficiently while maintaining high standards of quality.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">Can I change my project plan after the quote?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>Yes, we are flexible and can accommodate changes to your project plan even after the initial quote. Your satisfaction is our priority.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <h3 class="faq-item__title">Do you clean up after the work is done?</h3>
-            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-          <div class="faq-item__answer">
-            <p>Absolutely! Our team ensures that the work area is clean and tidy at the end of each day. We respect your property and aim to leave it better than we found it.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Pre-Footer Section -->
   <section class="section section--prefooter" id="quote">
@@ -1241,23 +1003,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p>© 2025 Capital Premier Roofing Ltd. All rights reserved. | <a href="#">Privacy Policy</a> |
-          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
+        <p>© 2025 Capital Premier Roofing Ltd.
         </p>
       </div>
     </div>
