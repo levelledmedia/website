@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lady Gardeners - Professional Landscaping Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style id="dark-mode-init">
+    html.dark-mode-init .card,
+    html.dark-mode-init .form-input,
+    html.dark-mode-init .btn--ghost-light {
+      background: #1A1A1A !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #F1F5F9 !important;
+    }
+    html.dark-mode-init .btn--ghost-light {
+      background: transparent !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      color: #fff !important;
+    }
+    html.dark-mode-init .header {
+      background: #121212 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+  </style>
+  <script>
+    // Apply default theme mode immediately before page renders to prevent flash
+    (function() {
+      const defaultTheme = 'light';
+      const businessName = 'Lady Gardeners';
+      const storageKey = 'darkMode_' + businessName.replace(/[^a-zA-Z0-9]/g, '_');
+
+      // Check if this is a preview (blob URL) - if so, always use the default theme
+      const isPreview = window.location.protocol === 'blob:';
+
+      let savedMode = localStorage.getItem(storageKey);
+
+      // For previews, clear any saved preference so you always see the configured default
+      if (isPreview && savedMode !== null) {
+        localStorage.removeItem(storageKey);
+        savedMode = null;
+      }
+
+      // Decide which mode to use
+      let useDarkMode = false;
+
+      if (savedMode !== null) {
+        // User has toggled before - use their saved preference
+        useDarkMode = (savedMode === 'enabled');
+      } else {
+        // No saved preference - use the configured default
+        useDarkMode = (defaultTheme === 'dark');
+        // Save the default so we know it's been initialized (unless it's a preview)
+        if (!isPreview) {
+          localStorage.setItem(storageKey, useDarkMode ? 'enabled' : 'disabled');
+        }
+      }
+
+      // Apply dark mode if needed
+      if (useDarkMode) {
+        document.documentElement.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-mode-init');
+      }
+
+      // Add dark-mode class to body when it's available (for body.dark-mode CSS selectors)
+      if (useDarkMode) {
+        if (document.body) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.addEventListener('DOMContentLoaded', function() {
+            if (useDarkMode) {
+              document.body.classList.add('dark-mode');
+            }
+          });
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <!-- Top Bar with Logo and CTA -->
+    <div class="header__top">
+      <div class="container">
+        <div class="header__content">
+          <div class="header__logo">
+            <img src="..&#x2F;images&#x2F;logo.jpg" alt="Lady Gardeners" class="header__logo-img">
+          </div>
+          <div class="header__right">
+            <a href="mailto:kelly.fury@googlemail.com" class="btn btn--ghost btn--sm header__email-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              kelly.fury@googlemail.com
+            </a>
+            <div class="header__social">
+              <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps?cid&#x3D;2714437859933168445" target="_blank" rel="noopener noreferrer" class="header__social-link" aria-label="Google Maps">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/07747510546" target="_blank" rel="noopener noreferrer" class="header__social-link" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </a>
+            </div>
+            <a href="tel:07747510546" class="btn btn--primary btn--sm header__call-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07747 510 546
+            </a>
+            <button class="header__hamburger" id="mobileMenuToggle" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="header__nav-bar">
+      <div class="container">
+        <div class="header__nav-container">
+          <nav class="header__nav">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#why">Why Us</a>
+            <a href="#work-carousel">Our Work</a>
+            <a href="#reviews-carousel">Reviews</a>
+            <a href="#areas">Areas</a>
+            <a href="#faq">FAQ</a>
+            <a href="#quote">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="header__mobile-menu" id="mobileMenu">
+      <nav class="header__mobile-nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#work-carousel">Our Work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#areas">Areas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quote">Contact</a>
+        <a href="tel:07747510546" class="btn btn--primary btn--full">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          Call 07747 510 546
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="..&#x2F;images&#x2F;hero.jpg" alt="Lady Gardeners" class="hero__image">
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__text">
+          <h1 class="h1">Trusted Gardeners Across Beds &amp; Bucks</h1>
+          <p class="hero__tagline">Your local choice for reliable, friendly, and high-quality gardening services across Bedfordshire and Buckinghamshire.</p>
+          <div class="hero__buttons">
+            <a href="tel:07747510546" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              Call Us Now
+            </a>
+            <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid stats-grid--three">
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Expert Team</div>
+            <div class="stat-item__label">Over 25 years of experience in the gardening industry.</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Quality Guaranteed</div>
+            <div class="stat-item__label">100% satisfaction guarantee on every project, big or small.</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Trusted Service</div>
+            <div class="stat-item__label">Rated 4.9&#x2F;5 stars by our clients with hundreds of successes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="section section--light" id="about">
+    <div class="container">
+      <div class="split">
+        <div class="split__media split__media--tall">
+          <img src="..&#x2F;images&#x2F;about.jpg" alt="Lady Gardeners" class="img">
+        </div>
+        <div class="split__content">
+          <h2 class="h-eyebrow">ABOUT US</h2>
+          <h2 class="h2">Welcome to Lady Gardeners</h2>
+          <p class="paragraph multiline">We provide high-quality gardening services throughout Bedfordshire and Buckinghamshire and the surrounding areas. From weeding, pruning, and grass cutting to rubbish disposal, we ensure your garden looks its best all year round.</p>
+          <p class="paragraph multiline">Whether you need a beautifully maintained garden, a clutter-free outdoor space, or expert tree care, we deliver friendly, reliable service with a commitment to customer satisfaction that keeps our clients coming back.</p>
+          <p class="paragraph multiline">Every job is completed to the highest standard, with meticulous attention to detail and clear communication throughout the process. Your peace of mind is our priority, and we&#39;re proud to be a trusted name in gardening services.</p>
+          <div class="button-group">
+            <a href="tel:07747510546" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07747 510 546
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section--services" id="services">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <p class="h-eyebrow">WHAT WE DO</p>
+          <h2 class="h2">Gardening Services</h2>
+        </div>
+        <div class="services-nav">
+          <button class="services-nav-btn services-nav-btn--prev" id="servicesPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="services-nav-btn services-nav-btn--next" id="servicesNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="services-carousel">
+        <div class="services-carousel-track" id="servicesTrack">
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service1.jpg" alt="Weeding">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Weeding</h3>
+              <p class="service-card__desc multiline">We will rid your garden of weeds and help to create the conditions to stop them reappearing. This allows the plants you want to thrive.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service2.jpg" alt="Pruning">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Pruning</h3>
+              <p class="service-card__desc multiline">We can cut back unruly climbing plants and trees to keep your garden neat and tidy. Our expertise ensures your garden remains healthy while controlling growth.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service3.jpg" alt="Grass Cutting">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Grass Cutting</h3>
+              <p class="service-card__desc multiline">Whether you need a one-off mowing service or regular maintenance, our grass cutting keeps your lawn looking trim. Tailored schedules ensure your garden stays pristine.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service4.jpg" alt="Hedge Trimming">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Hedge Trimming</h3>
+              <p class="service-card__desc multiline">We offer a professional hedge trimming service to keep your garden hedges healthy and in pristine condition. Regular maintenance options are available for optimal growth.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service5.jpg" alt="Jungle Clearing">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Jungle Clearing</h3>
+              <p class="service-card__desc multiline">If your garden has become overgrown, our jungle clearing service will restore order and make way for fresh possibilities. We handle all aspects of the clearing process.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service6.jpg" alt="Rubbish Disposal">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Rubbish Disposal</h3>
+              <p class="service-card__desc multiline">We clear away all garden waste after our services, ensuring a tidy finish. If you have existing rubbish, we can handle that too for your convenience.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service7.jpg" alt="Digging">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Digging</h3>
+              <p class="service-card__desc multiline">Need a flower bed or vegetable patch dug? Our team provides quick and efficient digging services tailored to your specifications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section section--light" id="why">
+    <div class="container">
+      <div class="split split--reverse">
+        <div class="split__media split__media--tall">
+          <img src="..&#x2F;images&#x2F;whyUs.jpg" alt="Your Local Gardening Expert" class="img">
+        </div>
+        <div class="split__content">
+          <h2 class="h-eyebrow">WHY CHOOSE US</h2>
+          <h2 class="h2">Your Local Gardening Expert</h2>
+          <p class="lead multiline">At Lady Gardeners, we&#39;re committed to providing high-quality gardening services that exceed your expectations. Our family-owned legacy and female-led team set us apart in the Bedfordshire area.</p>
+          <ul class="list-check">
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Tailored gardening services for every need</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Experienced female gardeners with a personal touch</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Competitive pricing with no hidden fees</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Comprehensive range of gardening services</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Strong commitment to customer satisfaction</strong>
+              </div>
+            </li>
+          </ul>
+          <div class="button-group">
+            <a href="tel:07747510546" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07747 510 546
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Projects - Carousel Version -->
+  <section class="section section--portfolio" id="work-carousel">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <p class="h-eyebrow">SEE OUR WORK</p>
+          <h2 class="h2">Recent Projects</h2>
+        </div>
+        <div class="portfolio-nav">
+          <button class="portfolio-nav-btn portfolio-nav-btn--prev" id="portfolioPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="portfolio-nav-btn portfolio-nav-btn--next" id="portfolioNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-carousel-wrapper">
+      <div class="portfolio-carousel">
+        <div class="portfolio-carousel-track" id="portfolioTrack">
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 1">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 2">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 3">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 4">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 5">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 6">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <img src="" alt="" class="lightbox__image" id="lightboxImage">
+  </div>
+
+  <!-- Before/After Transformation -->
+
+  <!-- CTA Banner -->
+  <section class="cta cta-pattern">
+    <div class="cta__grid">
+      <div class="cta__image-col">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop" alt="Professional at work" class="cta__image">
+      </div>
+      <div class="cta__content-wrapper">
+        <div class="cta__content-col">
+          <h3 class="cta__title">Ready to Talk?
+          </h3>
+          <p class="cta__description">If you&#39;re ready to discuss how we can help with your project, contact us today and get a free, no-obligation quotation.</p>
+          <div class="button-group">
+            <a href="tel:07747510546" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07747 510 546
+            </a>
+            <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner - Centered Version -->
+  <section class="cta cta--centered">
+    <div class="container">
+      <div class="cta__content-centered">
+        <h3 class="cta__title">Ready to Talk?</h3>
+        <p class="cta__description">If you&#39;re ready to discuss how we can help with your project, contact us today and get a free, no-obligation quotation.</p>
+        <div class="button-group">
+          <a href="tel:07747510546" class="btn btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            07747 510 546
+          </a>
+          <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section--light-alt" id="reviews-carousel">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow">TESTIMONIALS</p>
+          <h2 class="h2">Our Clients Say</h2>
+        </div>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial-card card">
+          <div class="testimonial-card__header">
+            <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+            </svg>
+            <div class="testimonial-card__rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <p class="testimonial-card__text multiline" data-full-text="Lady Gardeners transformed my overgrown backyard into a beautiful space. Their attention to detail is unmatched!">Lady Gardeners transformed my overgrown backyard into a beautiful space. Their attention to detail is unmatched!</p>
+          <div class="testimonial-card__footer">
+            <h4 class="testimonial-card__name">Sarah J.</h4>
+          </div>
+        </div>
+        <div class="testimonial-card card">
+          <div class="testimonial-card__header">
+            <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+            </svg>
+            <div class="testimonial-card__rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <p class="testimonial-card__text multiline" data-full-text="I was impressed with the professionalism and quality of work. Highly recommend their services!">I was impressed with the professionalism and quality of work. Highly recommend their services!</p>
+          <div class="testimonial-card__footer">
+            <h4 class="testimonial-card__name">Mark T.</h4>
+          </div>
+        </div>
+        <div class="testimonial-card card">
+          <div class="testimonial-card__header">
+            <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+            </svg>
+            <div class="testimonial-card__rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <p class="testimonial-card__text multiline" data-full-text="The team at Lady Gardeners is fantastic! They made my garden look stunning and were very friendly.">The team at Lady Gardeners is fantastic! They made my garden look stunning and were very friendly.</p>
+          <div class="testimonial-card__footer">
+            <h4 class="testimonial-card__name">Emily R.</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Map -->
+  <section class="section section--light section--location" id="areas">
+    <div class="container">
+      <div class="split">
+        <div class="split__content">
+          <p class="h-eyebrow">LOCATION</p>
+          <h2 class="h2">Service Areas</h2>
+          <p class="lead multiline">Lady Gardeners provides extensive gardening services throughout Bedfordshire and Buckinghamshire, ensuring a comprehensive solution for all your gardening needs.</p>
+          <div class="coverage-areas">
+            <div class="coverage-column">
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Dunstable</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Milton Keynes</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Bedford</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Hemel Hempstead</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Leighton Buzzard</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Luton</strong>
+                </div>
+              </div>
+            </div>
+            <div class="coverage-column">
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Flitwick</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Biggleswade</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>St Albans</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Bletchley</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Woburn</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Harpenden</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-group">
+            <a href="tel:07747510546" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07747 510 546
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+        <div class="split__media split__media--map">
+          <div class="map-container">
+            <iframe
+              src="https:&#x2F;&#x2F;www.google.com&#x2F;maps&#x2F;embed?pb&#x3D;!1m18!1m12!1m3!1d3000!2d-0.5956009999999999!3d51.8767301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x25ab9eda1630233d!2sLady%20Gardeners!5e0!3m2!1sen!2sus!4v1763180402941"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Lady Gardeners Location Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section--light" id="faq">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow">Frequently Asked Questions</p>
+          <h2 class="h2">The Answers You Need</h2>
+        </div>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What services does Lady Gardeners provide?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We provide comprehensive gardening services including weeding, pruning, grass cutting, hedge trimming, jungle clearing, and rubbish disposal.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">Where are you located and what areas do you serve?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We&#39;re based in Eaton Bray, Dunstable and serve Bedfordshire and Buckinghamshire, including Milton Keynes and Leighton Buzzard.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What are the operating hours for Lady Gardeners?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We&#39;re typically available Monday to Sunday, 5:30am to 10:00pm. Contact us to discuss your schedule and we&#39;ll do our best to accommodate.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">Do you offer free quotes or estimates?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>Yes! We offer free, no-obligation quotes. Simply call us or fill out the contact form and we&#39;ll provide a transparent estimate for your project.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What makes Lady Gardeners different to other gardening companies?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We pride ourselves on exceptional workmanship, reliability, and competitive pricing. With a family-owned legacy since the 1920s, we ensure personalized service.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">How do I get in contact with you?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>You can reach us by calling 07747 510 546, emailing kelly.fury@googlemail.com, or filling out the contact form on our website. We aim to respond to all inquiries within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-Footer Section -->
+  <section class="section section--prefooter" id="quote">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow"></p>
+          <h2 class="h2">Get a Free Quote</h2>
+          <p class="section__description">Fill out the form below and we&#39;ll get back to you with a competitive quote.</p>
+        </div>
+      </div>
+      <form class="quote-form">
+        <div class="form-row">
+          <input type="text" placeholder="Full name" class="form-input" required>
+          <input type="text" placeholder="Postcode" class="form-input" required>
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="Email address" class="form-input" required>
+          <input type="tel" placeholder="Phone number" class="form-input" required>
+        </div>
+        <textarea placeholder="Briefly describe your project" class="form-input form-textarea" required></textarea>
+        <button type="submit" class="btn btn--primary btn--full">Yes, I Want a Free Quote</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__col footer__col--logo">
+          <div class="footer__logo">
+              <img src="..&#x2F;images&#x2F;logo.jpg" alt="Lady Gardeners" class="footer__logo-img">
+          </div>
+          <p class="footer__tagline">Your local choice for reliable, friendly, and high-quality gardening services across Bedfordshire and Buckinghamshire.</p>
+        </div>
+        <div class="footer__col footer__col--links">
+          <h4 class="footer__heading">Links</h4>
+          <ul class="footer__links footer__links--split">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#work-carousel">Our Work</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--contact">
+          <h4 class="footer__heading">Contact</h4>
+          <ul class="footer__links">
+            <li>22 Northall Rd, Eaton Bray, Dunstable LU6 2RR, United Kingdom</li>
+            <li><strong>Phone:</strong> 07747 510 546</li>
+            <li><strong>Email:</strong> kelly.fury@googlemail.com</li>
+          </ul>
+          <div class="footer__social">
+            <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps?cid&#x3D;2714437859933168445" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Google Maps">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/07747510546" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Lady Gardeners. All rights reserved. | <a href="#">Privacy Policy</a> |
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
