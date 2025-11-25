@@ -212,6 +212,7 @@
       </button>
 
       <div class="success" id="success">✓ Download started!</div>
+      <div class="success" id="preparing" style="display: none; color: #667eea;">Preparing download... This may take 1-2 minutes.</div>
     </form>
 
     <div class="footer">
@@ -229,6 +230,7 @@
     const btnText = document.getElementById('btnText');
     const spinner = document.getElementById('spinner');
     const successMsg = document.getElementById('success');
+    const preparingMsg = document.getElementById('preparing');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -247,9 +249,11 @@
       submitBtn.disabled = true;
       btnText.style.display = 'none';
       spinner.classList.add('show');
+      preparingMsg.style.display = 'block';
 
       try {
         await downloadFiles();
+        preparingMsg.style.display = 'none';
         successMsg.classList.add('show');
         setTimeout(() => {
           btnText.style.display = 'block';
@@ -264,6 +268,7 @@
         alert('Error creating download. Please try again or contact support.');
         btnText.style.display = 'block';
         spinner.classList.remove('show');
+        preparingMsg.style.display = 'none';
         submitBtn.disabled = false;
       }
     });
@@ -290,41 +295,22 @@
       }
 
       // Fetch and add images
-      try {
+      const imageFiles = ["portfolio-placeholder.jpg","logo.jpg","hero.jpg","about.jpg","whyUs.jpg","before.jpg","after.jpg","service1.jpg","service2.jpg","service3.jpg","service4.jpg","service5.jpg","service6.jpg","service7.jpg","portfolio1.jpg","portfolio2.jpg","portfolio3.jpg","portfolio4.jpg","portfolio5.jpg","portfolio6.jpg","portfolio7.jpg","portfolio8.jpg","portfolio9.jpg"];
+      if (imageFiles.length > 0) {
         const imagesFolder = zip.folder('images');
-        const imageResponse = await fetch('../images/');
 
-        // Try to get images from the images folder
-        // Note: GitHub Pages doesn't support directory listing, so we'll need to know which images exist
-        // We'll attempt to fetch common image names
-        const commonImages = [
-          'hero.jpg', 'hero.png', 'hero.webp',
-          'about.jpg', 'about.png', 'about.webp',
-          'whyUs.jpg', 'whyUs.png', 'whyUs.webp',
-          'cta.jpg', 'cta.png', 'cta.webp',
-          'before.jpg', 'before.png', 'before.webp',
-          'after.jpg', 'after.png', 'after.webp'
-        ];
-
-        // Add numbered images (services and portfolio)
-        for (let i = 1; i <= 20; i++) {
-          commonImages.push(`service${i}.jpg`, `service${i}.png`, `service${i}.webp`);
-          commonImages.push(`portfolio${i}.jpg`, `portfolio${i}.png`, `portfolio${i}.webp`);
-        }
-
-        for (const imageName of commonImages) {
+        for (const imageName of imageFiles) {
           try {
-            const imgResponse = await fetch(`../images/${imageName}`);
+            // Images are stored at /saygrass/images/ not /saygrass/1/images/
+            const imgResponse = await fetch(`../../images/${imageName}`);
             if (imgResponse.ok) {
               const blob = await imgResponse.blob();
               imagesFolder.file(imageName, blob);
             }
           } catch (error) {
-            // Image doesn't exist, skip it
+            console.error(`Error fetching image ${imageName}:`, error);
           }
         }
-      } catch (error) {
-        console.log('No images folder or error fetching images');
       }
 
       // Generate and download zip
