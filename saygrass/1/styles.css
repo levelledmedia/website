@@ -613,7 +613,7 @@ button {
 .header__nav a {
   font-size: 16px;
   font-weight: 600;
-  color: var(--dark);
+  color: #012210;
   position: relative;
   padding: 0;
   transition: color 0.2s ease;
@@ -622,7 +622,7 @@ button {
 }
 
 .header__nav a:hover {
-  color: var(--primary);
+  color: #02883e;
 }
 
 .header__hamburger {
@@ -736,7 +736,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: #040d0b9e;
+  background: #040d0b99;
 }
 
 .hero__content {
