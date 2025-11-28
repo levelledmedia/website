@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pen &amp; Barrow Ltd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style id="dark-mode-init">
+    html.dark-mode-init .card,
+    html.dark-mode-init .form-input,
+    html.dark-mode-init .btn--ghost-light {
+      background: #1A1A1A !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #F1F5F9 !important;
+    }
+    html.dark-mode-init .btn--ghost-light {
+      background: transparent !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      color: #fff !important;
+    }
+    html.dark-mode-init .header {
+      background: #121212 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+  </style>
+  <script>
+    // Apply default theme mode immediately before page renders to prevent flash
+    (function() {
+      const defaultTheme = 'light';
+      const businessName = 'Pen &amp; Barrow Ltd';
+      const storageKey = 'darkMode_' + businessName.replace(/[^a-zA-Z0-9]/g, '_');
+
+      // Check if this is a preview (blob URL) - if so, always use the default theme
+      const isPreview = window.location.protocol === 'blob:';
+
+      let savedMode = localStorage.getItem(storageKey);
+
+      // For previews, clear any saved preference so you always see the configured default
+      if (isPreview && savedMode !== null) {
+        localStorage.removeItem(storageKey);
+        savedMode = null;
+      }
+
+      // Decide which mode to use
+      let useDarkMode = false;
+
+      if (savedMode !== null) {
+        // User has toggled before - use their saved preference
+        useDarkMode = (savedMode === 'enabled');
+      } else {
+        // No saved preference - use the configured default
+        useDarkMode = (defaultTheme === 'dark');
+        // Save the default so we know it's been initialized (unless it's a preview)
+        if (!isPreview) {
+          localStorage.setItem(storageKey, useDarkMode ? 'enabled' : 'disabled');
+        }
+      }
+
+      // Apply dark mode if needed
+      if (useDarkMode) {
+        document.documentElement.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-mode-init');
+      }
+
+      // Add dark-mode class to body when it's available (for body.dark-mode CSS selectors)
+      if (useDarkMode) {
+        if (document.body) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.addEventListener('DOMContentLoaded', function() {
+            if (useDarkMode) {
+              document.body.classList.add('dark-mode');
+            }
+          });
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <!-- Top Bar with Logo and CTA -->
+    <div class="header__top">
+      <div class="container">
+        <div class="header__content">
+          <div class="header__logo">
+            <img src="..&#x2F;images&#x2F;logo.jpg" alt="Pen &amp; Barrow Ltd" class="header__logo-img">
+          </div>
+          <div class="header__right">
+            <a href="mailto:david@penandbarrow.co.uk" class="btn btn--ghost btn--sm header__email-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              david@penandbarrow.co.uk
+            </a>
+            <div class="header__social">
+              <a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;PenandBarrow" target="_blank" class="header__social-link" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https:&#x2F;&#x2F;www.instagram.com&#x2F;penandbarrow&#x2F;" target="_blank" class="header__social-link" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps?cid&#x3D;9005190440024461356" target="_blank" rel="noopener noreferrer" class="header__social-link" aria-label="Google Maps">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/07774679806" target="_blank" rel="noopener noreferrer" class="header__social-link" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </a>
+            </div>
+            <a href="tel:07774679806" class="btn btn--primary btn--sm header__call-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07774 679806
+            </a>
+            <button class="header__hamburger" id="mobileMenuToggle" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="header__nav-bar">
+      <div class="container">
+        <div class="header__nav-container">
+          <nav class="header__nav">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#why">Why Us</a>
+            <a href="#work-carousel">Our Work</a>
+            <a href="#reviews-carousel">Reviews</a>
+            <a href="#areas">Areas</a>
+            <a href="#faq">FAQ</a>
+            <a href="#quote">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="header__mobile-menu" id="mobileMenu">
+      <nav class="header__mobile-nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#work-carousel">Our Work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#areas">Areas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quote">Contact</a>
+        <a href="tel:07774679806" class="btn btn--primary btn--full">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          Call 07774 679806
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="..&#x2F;images&#x2F;hero.jpg" alt="Pen &amp; Barrow Ltd" class="hero__image">
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__text">
+          <h1 class="h1">Trusted Landscapers in London &amp; Home Counties</h1>
+          <p class="hero__tagline">Your local choice for reliable, friendly, and high-quality landscaping services across London and the home counties.</p>
+          <div class="hero__buttons">
+            <a href="tel:07774679806" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              Call Us Now
+            </a>
+            <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid stats-grid--three">
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Expert Team</div>
+            <div class="stat-item__label">Over 15 years of experience in the landscaping industry.</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Quality Guaranteed</div>
+            <div class="stat-item__label">100% satisfaction guarantee on every project, big or small.</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="stat-item__content">
+            <div class="stat-item__number">Trusted Service</div>
+            <div class="stat-item__label">Rated 5&#x2F;5 stars by our clients with hundreds of successes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="section section--light" id="about">
+    <div class="container">
+      <div class="split">
+        <div class="split__media split__media--tall">
+          <img src="..&#x2F;images&#x2F;about.jpg" alt="Pen &amp; Barrow Ltd" class="img">
+        </div>
+        <div class="split__content">
+          <h2 class="h-eyebrow">ABOUT US</h2>
+          <h2 class="h2">Welcome to Pen &amp; Barrow</h2>
+          <p class="paragraph multiline">We provide comprehensive landscape design and build services throughout London and the surrounding areas. From intimate courtyards and outdoor kitchens to expansive rural landscapes, we create spaces that reflect your individuality.</p>
+          <p class="paragraph multiline">Whether you need a modest garden upgrade, a stunning outdoor kitchen, or a complete exterior transformation, we deliver a collaborative and enjoyable experience with a commitment bringing your vision to life.</p>
+          <p class="paragraph multiline">Every job is completed to the highest quality standards, with meticulous attention to detail and clear communication throughout. Your satisfaction is our priority, and we&#39;re proud to be a trusted choice for transforming outdoor spaces.</p>
+          <div class="button-group">
+            <a href="tel:07774679806" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07774 679806
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section--services" id="services">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <p class="h-eyebrow">WHAT WE DO</p>
+          <h2 class="h2">Landscaping Services</h2>
+        </div>
+        <div class="services-nav">
+          <button class="services-nav-btn services-nav-btn--prev" id="servicesPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="services-nav-btn services-nav-btn--next" id="servicesNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="services-carousel">
+        <div class="services-carousel-track" id="servicesTrack">
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service1.jpg" alt="Landscape Design">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Landscape Design</h3>
+              <p class="service-card__desc multiline">Comprehensive design services to create beautiful and functional outdoor spaces. Tailored solutions ensure your garden reflects your personal style and needs.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service2.jpg" alt="Garden Construction">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Garden Construction</h3>
+              <p class="service-card__desc multiline">Expert construction services for patios, pathways, and outdoor kitchens to enhance your garden&#39;s usability. We guarantee quality craftsmanship and attention to detail.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card__image">
+              <img src="..&#x2F;images&#x2F;service3.jpg" alt="Project Supervision">
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Project Supervision</h3>
+              <p class="service-card__desc multiline">Overseeing every aspect of your landscaping project to ensure it meets our high standards. Our hands-on approach guarantees a smooth and enjoyable experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section section--light" id="why">
+    <div class="container">
+      <div class="split split--reverse">
+        <div class="split__media split__media--tall">
+          <img src="..&#x2F;images&#x2F;whyUs.jpg" alt="Your Local Landscaping Expert" class="img">
+        </div>
+        <div class="split__content">
+          <h2 class="h-eyebrow">WHY CHOOSE US</h2>
+          <h2 class="h2">Your Local Landscaping Expert</h2>
+          <p class="lead multiline">At Pen &amp; Barrow, we&#39;re committed to delivering exceptional landscaping services that transform your outdoor spaces. Our personalized approach and attention to detail set us apart.</p>
+          <ul class="list-check">
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>On-time and on-budget project guarantees</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Bespoke designs tailored to your unique vision</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Expert supervision by our founder, David Goodman</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Access to a network of specialized partners</strong>
+              </div>
+            </li>
+            <li>
+              <i aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </i>
+              <div>
+                <strong>Commitment to quality craftsmanship and innovation</strong>
+              </div>
+            </li>
+          </ul>
+          <div class="button-group">
+            <a href="tel:07774679806" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07774 679806
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Projects - Carousel Version -->
+  <section class="section section--portfolio" id="work-carousel">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <p class="h-eyebrow">SEE OUR WORK</p>
+          <h2 class="h2">Recent Projects</h2>
+        </div>
+        <div class="portfolio-nav">
+          <button class="portfolio-nav-btn portfolio-nav-btn--prev" id="portfolioPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="portfolio-nav-btn portfolio-nav-btn--next" id="portfolioNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-carousel-wrapper">
+      <div class="portfolio-carousel">
+        <div class="portfolio-carousel-track" id="portfolioTrack">
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio1.jpg" alt="Portfolio project 1">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio2.jpg" alt="Portfolio project 2">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio3.jpg" alt="Portfolio project 3">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio4.jpg" alt="Portfolio project 4">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio5.jpg" alt="Portfolio project 5">
+          </div>
+          <div class="portfolio-carousel-slide">
+            <img src="..&#x2F;images&#x2F;portfolio6.jpg" alt="Portfolio project 6">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <img src="" alt="" class="lightbox__image" id="lightboxImage">
+  </div>
+
+  <!-- Before/After Transformation -->
+  <section class="section section--light" id="work">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow">TRANSFORMATION</p>
+          <h2 class="h2">See The Difference</h2>
+          <p class="section__description"></p>
+        </div>
+      </div>
+      <div class="before-after-slider">
+        <div class="before-after-container">
+          <img src="..&#x2F;images&#x2F;after.jpg" alt="" class="before-after-image before-after-image--after">
+          <img src="..&#x2F;images&#x2F;before.jpg" alt="" class="before-after-image before-after-image--before" id="beforeImage">
+          <div class="before-after-slider-handle" id="sliderHandle">
+            <div class="slider-button">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="17 8 21 12 17 16"></polyline>
+                <polyline points="7 8 3 12 7 16"></polyline>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="before-after-labels">
+            <span class="label-before">Before</span>
+            <span class="label-after">After</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta cta-pattern">
+    <div class="cta__grid">
+      <div class="cta__image-col">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop" alt="Professional at work" class="cta__image">
+      </div>
+      <div class="cta__content-wrapper">
+        <div class="cta__content-col">
+          <h3 class="cta__title">Ready to Talk?
+          </h3>
+          <p class="cta__description">If you&#39;re ready to discuss how we can help with your project, contact us today and get a free, no-obligation quotation.</p>
+          <div class="button-group">
+            <a href="tel:07774679806" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07774 679806
+            </a>
+            <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner - Centered Version -->
+  <section class="cta cta--centered">
+    <div class="container">
+      <div class="cta__content-centered">
+        <h3 class="cta__title">Ready to Talk?</h3>
+        <p class="cta__description">If you&#39;re ready to discuss how we can help with your project, contact us today and get a free, no-obligation quotation.</p>
+        <div class="button-group">
+          <a href="tel:07774679806" class="btn btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            07774 679806
+          </a>
+          <a href="#quote" class="btn btn--ghost-light">Get Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel -->
+  <section class="section section--light-alt" id="reviews-carousel">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <p class="h-eyebrow">TESTIMONIALS</p>
+          <h2 class="h2">Our Clients Say</h2>
+        </div>
+        <div class="testimonial-nav">
+          <button class="testimonial-nav-btn testimonial-nav-btn--prev" id="testimonialPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="testimonial-nav-btn testimonial-nav-btn--next" id="testimonialNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-carousel-wrapper">
+      <div class="testimonial-carousel">
+        <div class="testimonial-carousel-track" id="testimonialTrack">
+          <div class="testimonial-carousel-slide">
+            <div class="testimonial-card card">
+              <div class="testimonial-card__header">
+                <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                </svg>
+                <div class="testimonial-card__rating">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="testimonial-card__text" data-full-text="We had an excellent experience of working with David and Pen &amp; Barrow, who transformed our garden with his ideas. David was prompt with his deliverables and was really helpful and knowledgeable when talking through his thoughts. I&#39;d highly recommend him to others thinking about transforming their garden.">We had an excellent experience of working with David and Pen &amp; Barrow, who transformed our garden with his ideas. David was prompt with his deliverables and was really helpful and knowledgeable when talking through his thoughts. I&#39;d highly recommend him to others thinking about transforming their garden.</p>
+              <div class="testimonial-card__footer">
+                <h4 class="testimonial-card__name">Louise Hughes</h4>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-carousel-slide">
+            <div class="testimonial-card card">
+              <div class="testimonial-card__header">
+                <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                </svg>
+                <div class="testimonial-card__rating">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="testimonial-card__text" data-full-text="Very professional, friendly, helpful, efficient, knowledgeable and prompt in all aspects of garden design from hard landscaping to soft planting. Understands what you’re looking for even if you don’t know it yourself. Had brilliant ideas. Would definitely recommend. A* service 😄">Very professional, friendly, helpful, efficient, knowledgeable and prompt in all aspects of garden design from hard landscaping to soft planting. Understands what you’re looking for even if you don’t know it yourself. Had brilliant ideas. Would definitely recommend. A* service 😄</p>
+              <div class="testimonial-card__footer">
+                <h4 class="testimonial-card__name">Deb Slade</h4>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-carousel-slide">
+            <div class="testimonial-card card">
+              <div class="testimonial-card__header">
+                <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                </svg>
+                <div class="testimonial-card__rating">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="testimonial-card__text" data-full-text="We had an excellent experience with David, who transformed our garden with his ideas. I’d highly recommend him to others thinking about transforming their garden.">We had an excellent experience with David, who transformed our garden with his ideas. I’d highly recommend him to others thinking about transforming their garden.</p>
+              <div class="testimonial-card__footer">
+                <h4 class="testimonial-card__name">Minnie Aumonier</h4>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-carousel-slide">
+            <div class="testimonial-card card">
+              <div class="testimonial-card__header">
+                <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                </svg>
+                <div class="testimonial-card__rating">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="testimonial-card__text" data-full-text="Extremely professional and knowledgable, great ideas and worked within our budget. David is a pleasure to deal with. Highly recommend.">Extremely professional and knowledgable, great ideas and worked within our budget. David is a pleasure to deal with. Highly recommend.</p>
+              <div class="testimonial-card__footer">
+                <h4 class="testimonial-card__name">Lucy Shorey</h4>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-carousel-slide">
+            <div class="testimonial-card card">
+              <div class="testimonial-card__header">
+                <svg class="testimonial-google-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                </svg>
+                <div class="testimonial-card__rating">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="testimonial-card__text" data-full-text="David has a keen eye for detail and his designs really stood out for us with their originality and creativity. David is extremely personable and has completely transformed our garden. Highly recommended.">David has a keen eye for detail and his designs really stood out for us with their originality and creativity. David is extremely personable and has completely transformed our garden. Highly recommended.</p>
+              <div class="testimonial-card__footer">
+                <h4 class="testimonial-card__name">Kate Pacheco</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Map -->
+  <section class="section section--light section--location" id="areas">
+    <div class="container">
+      <div class="split">
+        <div class="split__content">
+          <p class="h-eyebrow">LOCATION</p>
+          <h2 class="h2">Service Areas</h2>
+          <p class="lead multiline">Pen &amp; Barrow provides exceptional landscape design and build services primarily in Bedford and surrounding areas, ensuring unique outdoor transformations.</p>
+          <div class="coverage-areas">
+            <div class="coverage-column">
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Bedford</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Luton</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Milton Keynes</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>St Neots</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Biggleswade</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Wellingborough</strong>
+                </div>
+              </div>
+            </div>
+            <div class="coverage-column">
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Rushden</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Kettering</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Leighton Buzzard</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Flitwick</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Harrold</strong>
+                </div>
+              </div>
+              <div class="coverage-item">
+                <i aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </i>
+                <div>
+                  <strong>Ampthill</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-group">
+            <a href="tel:07774679806" class="btn btn--primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              07774 679806
+            </a>
+            <a href="#quote" class="btn btn--ghost">Get Free Quote</a>
+          </div>
+        </div>
+        <div class="split__media split__media--map">
+          <div class="map-container">
+            <iframe
+              src="https:&#x2F;&#x2F;www.google.com&#x2F;maps&#x2F;embed?pb&#x3D;!1m18!1m12!1m3!1d3000!2d-0.4613212!3d52.14175239999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7cf8dcfe6066d02c!2sPen%20%26%20Barrow!5e0!3m2!1sen!2sus!4v1763971520695"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Pen &amp; Barrow Ltd Location Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section--light" id="faq">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow">Frequently Asked Questions</p>
+          <h2 class="h2">The Answers You Need</h2>
+        </div>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What services does Pen &amp; Barrow provide?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We provide comprehensive landscape design and build services including garden transformations, outdoor kitchens, bespoke outdoor spaces, and project supervision.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">Where are you located and what areas do you serve?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We&#39;re based in Bedford and serve London and the home counties, with a willingness to travel further afield to meet your needs.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What are the operating hours for Pen &amp; Barrow?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We&#39;re typically available Monday to Saturday, 8am-6pm. Contact us to discuss your schedule and we&#39;ll do our best to accommodate.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">Do you offer free quotes or estimates?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>Yes! We offer free, no-obligation quotes. Simply call us or fill out the contact form and we&#39;ll provide a transparent estimate for your project.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">What makes Pen &amp; Barrow different to other landscaping companies?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>We pride ourselves on quality workmanship, creative designs, and a collaborative approach. With a strong commitment to customer satisfaction, we ensure every project is tailored to your needs.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-item__question">
+            <h3 class="faq-item__title">How do I get in contact with you?</h3>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="faq-item__answer">
+            <p>You can reach us by calling +44 7774 679806, emailing david@penandbarrow.co.uk, or filling out the contact form on our website. We aim to respond to all inquiries within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-Footer Section -->
+  <section class="section section--prefooter" id="quote">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <div>
+          <p class="h-eyebrow">CONTACT US</p>
+          <h2 class="h2">Get A Free Quote</h2>
+          <p class="section__description">Fill out the form below and we&#39;ll get back to you with a competitive quote.</p>
+        </div>
+      </div>
+      <form class="quote-form">
+        <div class="form-row">
+          <input type="text" placeholder="Full name" class="form-input" required>
+          <input type="text" placeholder="Postcode" class="form-input" required>
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="Email address" class="form-input" required>
+          <input type="tel" placeholder="Phone number" class="form-input" required>
+        </div>
+        <textarea placeholder="Briefly describe your project" class="form-input form-textarea" required></textarea>
+        <button type="submit" class="btn btn--primary btn--full">Yes, I Want a Free Quote</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__col footer__col--logo">
+          <div class="footer__logo">
+              <img src="..&#x2F;images&#x2F;logo.jpg" alt="Pen &amp; Barrow Ltd" class="footer__logo-img">
+          </div>
+          <p class="footer__tagline">Your local choice for reliable, friendly, and high-quality landscaping services across London and the home counties.</p>
+        </div>
+        <div class="footer__col footer__col--links">
+          <h4 class="footer__heading">Links</h4>
+          <ul class="footer__links footer__links--split">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#work-carousel">Our Work</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--contact">
+          <h4 class="footer__heading">Contact</h4>
+          <ul class="footer__links">
+            <li>44 Kimbolton Rd, Bedford MK40 2NX, UK</li>
+            <li><strong>Phone:</strong> 07774 679806</li>
+            <li><strong>Email:</strong> david@penandbarrow.co.uk</li>
+          </ul>
+          <div class="footer__social">
+            <a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;PenandBarrow" target="_blank" class="footer__social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https:&#x2F;&#x2F;www.instagram.com&#x2F;penandbarrow&#x2F;" target="_blank" class="footer__social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps?cid&#x3D;9005190440024461356" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Google Maps">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/07774679806" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Pen &amp; Barrow Ltd. All rights reserved. | <a href="#">Privacy Policy</a> |
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
