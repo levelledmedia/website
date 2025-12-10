@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Website Files - IME Connect</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+    }
+    h1 { color: #333; margin-bottom: 10px; font-size: 28px; }
+    .subtitle { color: #666; margin-bottom: 30px; font-size: 16px; }
+    .file-list {
+      background: #f7f9fc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #e1e8ed;
+    }
+    .file-item:last-child { border-bottom: none; }
+    .file-name {
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .file-icon {
+      width: 24px;
+      height: 24px;
+      background: #667eea;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .download-btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .download-btn:hover {
+      background: #5568d3;
+      transform: translateY(-1px);
+    }
+    .download-all {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .instructions {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #856404;
+    }
+    .instructions strong { display: block; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📦 Download Your Website</h1>
+    <p class="subtitle">IME Connect - Professional Medical Services</p>
+
+    <div class="file-list">
+      <div class="file-item">
+        <div class="file-name">
+          <div class="file-icon">H</div>
+          index.html
+        </div>
+        <a href="../index.html" download class="download-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <div class="file-icon">C</div>
+          styles.css
+        </div>
+        <a href="../styles.css" download class="download-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <div class="file-icon">J</div>
+          script.js
+        </div>
+        <a href="../script.js" download class="download-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <div class="file-icon">📁</div>
+          images/ (11 files)
+        </div>
+        <a href="../images/" target="_blank" class="download-btn">View</a>
+      </div>
+    </div>
+
+    <button onclick="downloadAll()" class="download-btn download-all">
+      ⬇️ Download All Files
+    </button>
+
+    <div class="instructions">
+      <strong>📋 How to use:</strong>
+      Click "Download All Files" to get everything at once, or download individual files above.
+      To download images, click "View" and then right-click each image to save.
+    </div>
+  </div>
+
+  <script>
+    async function downloadAll() {
+      const files = [
+        { url: '../index.html', name: 'index.html' },
+        { url: '../styles.css', name: 'styles.css' },
+        { url: '../script.js', name: 'script.js' }
+      ];
+
+      for (const file of files) {
+        const a = document.createElement('a');
+        a.href = file.url;
+        a.download = file.name;
+        a.click();
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+
+      alert('Files downloaded! Note: Images must be downloaded separately from the images folder.');
+    }
+  </script>
+</body>
+</html>
