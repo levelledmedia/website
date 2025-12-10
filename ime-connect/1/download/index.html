@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Website Files - IME-Connect</title>
+  <title>Download Website Files - IME Connect</title>
   <style>
     * {
       margin: 0;
@@ -189,7 +189,7 @@
 
     <div class="business-name">
       <div class="business-name-label">Business Name</div>
-      <div class="business-name-value">IME-Connect</div>
+      <div class="business-name-value">IME Connect</div>
     </div>
 
     <form id="downloadForm">
@@ -276,6 +276,9 @@
     async function downloadFiles() {
       const zip = new JSZip();
 
+      // Create a "1" folder in the zip to match the structure
+      const folderInZip = zip.folder('1');
+
       // Fetch all files
       const files = [
         { name: 'index.html', url: '../index.html' },
@@ -283,25 +286,26 @@
         { name: 'script.js', url: '../script.js' }
       ];
 
-      // Fetch and add main files to zip
+      // Fetch and add main files to zip inside "1" folder
       for (const file of files) {
         try {
           const response = await fetch(file.url);
           const content = await response.text();
-          zip.file(file.name, content);
+          folderInZip.file(file.name, content);
         } catch (error) {
           console.error(`Error fetching ${file.name}:`, error);
         }
       }
 
-      // Fetch and add images
+      // Fetch and add images - also inside "1" folder but in "1/images" subfolder
       const imageFiles = ["about.jpg","canada.jpg","hero.jpg","logo.png","logo2.png","portfolio-placeholder.jpg","service1.jpg","service2.jpg","service3.jpg","service4.jpg","whyUs.jpg"];
       if (imageFiles.length > 0) {
-        const imagesFolder = zip.folder('images');
+        // Create images folder inside the "1" folder
+        const imagesFolder = folderInZip.folder('images');
 
         for (const imageName of imageFiles) {
           try {
-            // Images are stored at /ime-connect/images/ not /ime-connect/1/images/
+            // Images are stored at /ime-connect/images/
             const imgResponse = await fetch(`../../images/${imageName}`);
             if (imgResponse.ok) {
               const blob = await imgResponse.blob();
