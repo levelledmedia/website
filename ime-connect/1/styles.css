@@ -5,7 +5,10 @@
 :root {
   /* Brand colors */
   --dark: #031f30;
-  --primary: #0d7bbf;
+  --primary: linear-gradient(135deg, #0767A5 0%, #0A8BC9 50%, #139ED7 100%);
+  --primary-hover: linear-gradient(135deg, #065a8a 0%, #087aa8 50%, #0f87ba 100%);
+  --primary-active: linear-gradient(135deg, #054d75 0%, #076891 50%, #0d7ba5 100%);
+  --primary-solid: #0d7bbf;
   --primary-600: #0c6fac;
   --primary-700: #0a5c8f;
   --accent: #1a91db;
@@ -169,7 +172,10 @@ button {
 }
 
 .section--services .h-eyebrow {
-  color: var(--primary);
+  background: var(--primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section--services .h2 {
@@ -213,7 +219,10 @@ button {
   font: 500 18px / 1 var(--font-headings);
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--primary);
+  background: var(--primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: var(--sp-4);
 }
 
@@ -288,17 +297,19 @@ button {
 .btn--primary {
   background: var(--primary);
   color: #fff;
-  box-shadow: var(--sh-soft);
+  box-shadow: 0 4px 12px rgba(7, 103, 165, 0.2), 0 2px 4px rgba(7, 103, 165, 0.15);
+  border: none;
 }
 
 .btn--primary:hover {
-  background: var(--primary-600);
-  box-shadow: var(--sh-card);
+  background: var(--primary-hover);
+  box-shadow: 0 6px 16px rgba(7, 103, 165, 0.25), 0 3px 6px rgba(7, 103, 165, 0.2);
 }
 
 .btn--primary:active {
-  background: var(--primary-700);
+  background: var(--primary-active);
   transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(7, 103, 165, 0.2), 0 1px 3px rgba(7, 103, 165, 0.15);
 }
 
 .btn--ghost {
@@ -416,7 +427,7 @@ button {
   background: var(--light);
   display: grid;
   place-items: center;
-  color: var(--primary);
+  color: #1a91db;
 }
 
 .stat-item__icon svg {
@@ -943,7 +954,7 @@ button {
 }
 
 .input-pill__btn:hover {
-  background: var(--primary-600);
+  background: var(--primary-hover);
   transform: scale(1.05);
 }
 
@@ -1095,8 +1106,8 @@ button {
 }
 
 .services-nav-btn:hover {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--primary-hover);
+  border-color: #065a8a;
   color: #fff;
   transform: scale(1.05);
 }
@@ -1476,8 +1487,8 @@ button {
 }
 
 .testimonial-nav-btn:hover {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--primary-hover);
+  border-color: #065a8a;
   color: #fff;
   transform: scale(1.05);
 }
