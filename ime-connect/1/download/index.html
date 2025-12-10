@@ -276,28 +276,24 @@
     async function downloadFiles() {
       const zip = new JSZip();
 
-      // Create folders: "1" and "images" at root of zip
-      const folder1 = zip.folder('1');
-      const imagesFolder = zip.folder('images');
-
-      // Fetch main files and add to "1" folder
+      // Add main files directly to "1" folder
       const files = [
-        { name: 'index.html', url: '../index.html' },
-        { name: 'styles.css', url: '../styles.css' },
-        { name: 'script.js', url: '../script.js' }
+        { name: '1/index.html', url: '../index.html' },
+        { name: '1/styles.css', url: '../styles.css' },
+        { name: '1/script.js', url: '../script.js' }
       ];
 
       for (const file of files) {
         try {
           const response = await fetch(file.url);
           const content = await response.text();
-          folder1.file(file.name, content);
+          zip.file(file.name, content);
         } catch (error) {
           console.error(`Error fetching ${file.name}:`, error);
         }
       }
 
-      // Fetch and add images to "images" folder
+      // Add images directly to "images" folder
       const imageFiles = ["about.jpg","canada.jpg","hero.jpg","logo.png","logo2.png","portfolio-placeholder.jpg","service1.jpg","service2.jpg","service3.jpg","service4.jpg","whyUs.jpg"];
       if (imageFiles.length > 0) {
         for (const imageName of imageFiles) {
@@ -305,7 +301,7 @@
             const imgResponse = await fetch(`../../images/${imageName}`);
             if (imgResponse.ok) {
               const blob = await imgResponse.blob();
-              imagesFolder.file(imageName, blob);
+              zip.file(`images/${imageName}`, blob);
             }
           } catch (error) {
             console.error(`Error fetching image ${imageName}:`, error);
