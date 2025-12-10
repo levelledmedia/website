@@ -276,36 +276,32 @@
     async function downloadFiles() {
       const zip = new JSZip();
 
-      // Create a "1" folder in the zip to match the structure
-      const folderInZip = zip.folder('1');
+      // Create folders: "1" and "images" at root of zip
+      const folder1 = zip.folder('1');
+      const imagesFolder = zip.folder('images');
 
-      // Fetch all files
+      // Fetch main files and add to "1" folder
       const files = [
         { name: 'index.html', url: '../index.html' },
         { name: 'styles.css', url: '../styles.css' },
         { name: 'script.js', url: '../script.js' }
       ];
 
-      // Fetch and add main files to zip inside "1" folder
       for (const file of files) {
         try {
           const response = await fetch(file.url);
           const content = await response.text();
-          folderInZip.file(file.name, content);
+          folder1.file(file.name, content);
         } catch (error) {
           console.error(`Error fetching ${file.name}:`, error);
         }
       }
 
-      // Fetch and add images - also inside "1" folder but in "1/images" subfolder
+      // Fetch and add images to "images" folder
       const imageFiles = ["about.jpg","canada.jpg","hero.jpg","logo.png","logo2.png","portfolio-placeholder.jpg","service1.jpg","service2.jpg","service3.jpg","service4.jpg","whyUs.jpg"];
       if (imageFiles.length > 0) {
-        // Create images folder inside the "1" folder
-        const imagesFolder = folderInZip.folder('images');
-
         for (const imageName of imageFiles) {
           try {
-            // Images are stored at /ime-connect/images/
             const imgResponse = await fetch(`../../images/${imageName}`);
             if (imgResponse.ok) {
               const blob = await imgResponse.blob();
