@@ -533,10 +533,8 @@ button {
 }
 
 .header__logo-img {
-  height: 76px;
+  height: 68px;
   width: auto;
-  max-width: 200px;
-  object-fit: contain;
 }
 
 .header__wordmark {
