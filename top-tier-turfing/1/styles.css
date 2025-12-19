@@ -65,7 +65,7 @@
   /* Typography */
   --font-headings: "Playfair Display", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --font-sans: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-  --fw-heading: 700;
+  --fw-heading: 400;
   --fs-hero: 68px;
   --fs-hero-subtitle: 26px;
   --fs-xxl: 48px;
