@@ -65,6 +65,7 @@
   /* Typography */
   --font-headings: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --font-sans: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --fw-heading: 700;
   --fs-hero: 68px;
   --fs-hero-subtitle: 26px;
   --fs-xxl: 48px;
@@ -222,7 +223,7 @@ button {
 }
 
 .h1 {
-  font: 700 var(--fs-hero) / var(--lh-tight) var(--font-headings);
+  font: var(--fw-heading) var(--fs-hero) / var(--lh-tight) var(--font-headings);
   color: var(--n-000);
   letter-spacing: -0.02em;
   margin-bottom: var(--sp-4);
@@ -230,7 +231,7 @@ button {
 }
 
 .h2 {
-  font: 700 var(--fs-xxl) / var(--lh-snug) var(--font-headings);
+  font: var(--fw-heading) var(--fs-xxl) / var(--lh-snug) var(--font-headings);
   color: var(--n-900);
   letter-spacing: -0.01em;
   margin-bottom: var(--sp-4);
@@ -533,7 +534,7 @@ button {
 }
 
 .header__logo-img {
-  height: 65px;
+  height: 66px;
   width: auto;
 }
 
@@ -734,7 +735,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: #040d0b99;
+  background: #040d0bcc;
 }
 
 .hero__content {
@@ -820,7 +821,7 @@ button {
 }
 
 .hero__form-title {
-  font: 700 var(--fs-xxl) / var(--lh-snug) var(--font-headings);
+  font: var(--fw-heading) var(--fs-xxl) / var(--lh-snug) var(--font-headings);
   color: var(--n-900);
   letter-spacing: -0.01em;
   margin-bottom: var(--sp-6);
@@ -1957,7 +1958,6 @@ button {
   width: auto;
   max-width: 250px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .footer__wordmark {
@@ -2476,7 +2476,7 @@ body.dark-mode .header__social-link:hover {
 }
 
 body.dark-mode .header__nav-container {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .header__nav a {
@@ -2553,11 +2553,11 @@ body.dark-mode .section--light {
 }
 
 body.dark-mode .section--light-alt {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section--services {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section--services .h-eyebrow {
@@ -2569,7 +2569,7 @@ body.dark-mode .section--services .h2 {
 }
 
 body.dark-mode .section--portfolio {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .stats-section {
@@ -2609,7 +2609,7 @@ body.dark-mode .stat-item__label {
 
 /* Dark Mode - Images */
 body.dark-mode .image-overlay-card {
-  background: rgba(26, 26, 26, 0.95);
+  background: rgba(15, 15, 15, 0.95);
 }
 
 body.dark-mode .image-overlay-card__text {
@@ -2617,7 +2617,7 @@ body.dark-mode .image-overlay-card__text {
 }
 
 body.dark-mode .split__media--tall::before {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .split__media--tall img {
@@ -2627,7 +2627,7 @@ body.dark-mode .split__media--tall img {
 /* Dark Mode - Service Cards */
 body.dark-mode .service-card {
   background: #0A0A0A;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: none;
   box-shadow: none;
 }
 
@@ -2647,11 +2647,11 @@ body.dark-mode .portfolio-carousel-slide {
 /* Dark Mode - Testimonials */
 body.dark-mode .testimonial-card {
   background: #0A0A0A;
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: transparent;
 }
 
 body.dark-mode .testimonial-card:hover {
-  border-color: var(--accent);
+  border-color: transparent;
   background: #0A0A0A;
 }
 
@@ -2662,11 +2662,11 @@ body.dark-mode .testimonial-card__text {
 
 /* Dark Mode - FAQ */
 body.dark-mode .faq-item {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .faq-item.active {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .faq-item__answer p {
@@ -2709,7 +2709,7 @@ body.dark-mode .btn--ghost-light:hover {
 }
 
 body.dark-mode .portfolio-nav-btn {
-  background: #1A1A1A;
+  background: #0f0f0f;
   border-color: rgba(255, 255, 255, 0.15);
   color: var(--n-600);
 }
@@ -2737,6 +2737,14 @@ body.dark-mode .cta-pattern {
   background: #0A0A0A;
 }
 
+body.dark-mode .cta__content-wrapper {
+  background: #0A0A0A;
+}
+
+body.dark-mode .cta--centered {
+  background: #0A0A0A;
+}
+
 body.dark-mode .cta__title {
   color: #FFFFFF;
 }
@@ -2747,7 +2755,7 @@ body.dark-mode .cta__description {
 
 /* Dark Mode - Quote Form Section */
 body.dark-mode .section--prefooter {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section__description {
