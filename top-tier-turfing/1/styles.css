@@ -4,12 +4,12 @@
 
 :root {
   /* Brand colors - generated from form inputs */
-  --dark: #172f24;
-  --primary: #5dbb8f;
-  --primary-600: #4bb181;
-  --primary-700: #3e946c;
-  --accent: #7cd3ab;
-  --light: #e7f5ee;
+  --dark: #0d2419;
+  --primary: #348E64;
+  --primary-600: #2f805a;
+  --primary-700: #276b4b;
+  --accent: #3aaf78;
+  --light: #e1eee8;
   --grey: #f2f2f2;
 
   /* Neutrals */
@@ -63,12 +63,12 @@
   --sp-32: 128px;
 
   /* Typography */
-  --font-headings: "Playfair Display", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-headings: "Cinzel", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --font-sans: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-  --fw-heading: 400;
+  --fw-heading: 600;
   --fs-hero: 68px;
   --fs-hero-subtitle: 26px;
-  --fs-xxl: 48px;
+  --fs-xxl: 46px;
   --fs-xl: 36px;
   --fs-lg: 28px;
   --fs-md: 18px;
@@ -612,7 +612,7 @@ button {
 .header__nav a {
   font-size: 16px;
   font-weight: 600;
-  color: #172f24;
+  color: #0d2419;
   position: relative;
   padding: 0;
   transition: color 0.2s ease;
@@ -621,7 +621,7 @@ button {
 }
 
 .header__nav a:hover {
-  color: #5dbb8f;
+  color: #348E64;
 }
 
 .header__hamburger {
@@ -735,7 +735,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: #040d0b99;
+  background: #040d0bbf;
 }
 
 .hero__content {
@@ -1005,6 +1005,20 @@ button {
 
 .split--reverse .split__media--tall img {
   transform: translate(-18px, -18px);
+}
+
+/* Hide image box effect when option is enabled */
+body.hide-image-box-effect .split__media--tall::before {
+  display: none;
+}
+
+body.hide-image-box-effect .split__media--tall img {
+  transform: none !important;
+  border: none !important;
+}
+
+body.hide-image-box-effect .split--reverse .split__media--tall img {
+  transform: none !important;
 }
 
 .split__media--map {
@@ -1954,11 +1968,10 @@ button {
 }
 
 .footer__logo-img {
-  height: 60px;
+  height: 70px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .footer__wordmark {
@@ -2477,7 +2490,7 @@ body.dark-mode .header__social-link:hover {
 }
 
 body.dark-mode .header__nav-container {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .header__nav a {
@@ -2554,11 +2567,11 @@ body.dark-mode .section--light {
 }
 
 body.dark-mode .section--light-alt {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section--services {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section--services .h-eyebrow {
@@ -2570,7 +2583,7 @@ body.dark-mode .section--services .h2 {
 }
 
 body.dark-mode .section--portfolio {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .stats-section {
@@ -2610,7 +2623,7 @@ body.dark-mode .stat-item__label {
 
 /* Dark Mode - Images */
 body.dark-mode .image-overlay-card {
-  background: rgba(26, 26, 26, 0.95);
+  background: rgba(15, 15, 15, 0.95);
 }
 
 body.dark-mode .image-overlay-card__text {
@@ -2618,7 +2631,7 @@ body.dark-mode .image-overlay-card__text {
 }
 
 body.dark-mode .split__media--tall::before {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .split__media--tall img {
@@ -2628,7 +2641,7 @@ body.dark-mode .split__media--tall img {
 /* Dark Mode - Service Cards */
 body.dark-mode .service-card {
   background: #0A0A0A;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: none;
   box-shadow: none;
 }
 
@@ -2648,11 +2661,11 @@ body.dark-mode .portfolio-carousel-slide {
 /* Dark Mode - Testimonials */
 body.dark-mode .testimonial-card {
   background: #0A0A0A;
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: transparent;
 }
 
 body.dark-mode .testimonial-card:hover {
-  border-color: var(--accent);
+  border-color: transparent;
   background: #0A0A0A;
 }
 
@@ -2663,11 +2676,11 @@ body.dark-mode .testimonial-card__text {
 
 /* Dark Mode - FAQ */
 body.dark-mode .faq-item {
-  background: #1A1A1A;
+  background: #0f0f0f;
 }
 
 body.dark-mode .faq-item.active {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .faq-item__answer p {
@@ -2710,7 +2723,7 @@ body.dark-mode .btn--ghost-light:hover {
 }
 
 body.dark-mode .portfolio-nav-btn {
-  background: #1A1A1A;
+  background: #0f0f0f;
   border-color: rgba(255, 255, 255, 0.15);
   color: var(--n-600);
 }
@@ -2738,6 +2751,14 @@ body.dark-mode .cta-pattern {
   background: #0A0A0A;
 }
 
+body.dark-mode .cta__content-wrapper {
+  background: #0A0A0A;
+}
+
+body.dark-mode .cta--centered {
+  background: #0A0A0A;
+}
+
 body.dark-mode .cta__title {
   color: #FFFFFF;
 }
@@ -2748,7 +2769,7 @@ body.dark-mode .cta__description {
 
 /* Dark Mode - Quote Form Section */
 body.dark-mode .section--prefooter {
-  background: #121212;
+  background: #0f0f0f;
 }
 
 body.dark-mode .section__description {
