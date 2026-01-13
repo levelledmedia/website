@@ -4,12 +4,12 @@
 
 :root {
   /* Brand colors - generated from form inputs */
-  --dark: #011d2e;
-  --primary: #0475b7;
-  --primary-600: #0469a5;
-  --primary-700: #035889;
-  --accent: #108ad1;
-  --light: #d9eaf4;
+  --dark: #011b2a;
+  --primary: #026aa7;
+  --primary-600: #025f96;
+  --primary-700: #01507d;
+  --accent: #0c7dbf;
+  --light: #d9e9f2;
   --grey: #f2f2f2;
 
   /* Neutrals */
@@ -534,7 +534,7 @@ button {
 }
 
 .header__logo-img {
-  height: 35px;
+  height: 82px;
   width: auto;
 }
 
@@ -612,7 +612,7 @@ button {
 .header__nav a {
   font-size: 16px;
   font-weight: 600;
-  color: #011d2e;
+  color: #011b2a;
   position: relative;
   padding: 0;
   transition: color 0.2s ease;
@@ -621,7 +621,7 @@ button {
 }
 
 .header__nav a:hover {
-  color: #0475b7;
+  color: #026aa7;
 }
 
 .header__hamburger {
