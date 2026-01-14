@@ -1968,7 +1968,7 @@ body.hide-image-box-effect .split--reverse .split__media--tall img {
 }
 
 .footer__logo-img {
-  height: px;
+  height: 80px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
