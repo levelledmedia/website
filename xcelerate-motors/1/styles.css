@@ -2574,10 +2574,6 @@ body.dark-mode .section--services {
   background: #0f0f0f;
 }
 
-body.dark-mode .section--services .h-eyebrow {
-  color: var(--accent);
-}
-
 body.dark-mode .section--services .h2 {
   color: var(--n-900);
 }
@@ -2604,7 +2600,7 @@ body.dark-mode .list-check strong {
 }
 
 body.dark-mode .h-eyebrow {
-  color: var(--n-500);
+  color: var(--accent);
 }
 
 body.dark-mode .paragraph,
