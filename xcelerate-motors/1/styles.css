@@ -4,12 +4,12 @@
 
 :root {
   /* Brand colors - generated from form inputs */
-  --dark: #320303;
-  --primary: #c90d0d;
-  --primary-600: #b50c0c;
-  --primary-700: #970a0a;
-  --accent: #e41c1c;
-  --light: #f7dbdb;
+  --dark: #31250b;
+  --primary: #c5932a;
+  --primary-600: #b18426;
+  --primary-700: #946e1f;
+  --accent: #d1a74e;
+  --light: #f6efdf;
   --grey: #f2f2f2;
 
   /* Neutrals */
@@ -612,7 +612,7 @@ button {
 .header__nav a {
   font-size: 16px;
   font-weight: 600;
-  color: #320303;
+  color: #31250b;
   position: relative;
   padding: 0;
   transition: color 0.2s ease;
@@ -621,7 +621,7 @@ button {
 }
 
 .header__nav a:hover {
-  color: #c90d0d;
+  color: #c5932a;
 }
 
 .header__hamburger {
@@ -1968,7 +1968,7 @@ body.hide-image-box-effect .split--reverse .split__media--tall img {
 }
 
 .footer__logo-img {
-  height: px;
+  height: 70px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
@@ -2614,7 +2614,7 @@ body.dark-mode .lead {
 
 /* Dark Mode - Stats/Benefits */
 body.dark-mode .stat-item__icon {
-  background: rgba(34, 192, 138, 0.15);
+  background: #0F0F0F;
 }
 
 body.dark-mode .stat-item__label {
@@ -2739,11 +2739,11 @@ body.dark-mode .section--location {
 }
 
 body.dark-mode .coverage-item i {
-  background: rgba(34, 192, 138, 0.15);
+  background: #0F0F0F;
 }
 
 body.dark-mode .list-check i {
-  background: rgba(34, 192, 138, 0.2);
+  background: #0F0F0F;
 }
 
 /* Dark Mode - CTA Section */
