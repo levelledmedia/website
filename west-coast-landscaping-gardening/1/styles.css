@@ -735,7 +735,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: #040d0b99;
+  background: #040d0ba6;
 }
 
 .hero__content {
@@ -1968,7 +1968,7 @@ body.hide-image-box-effect .split--reverse .split__media--tall img {
 }
 
 .footer__logo-img {
-  height: px;
+  height: 60px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
@@ -2574,10 +2574,6 @@ body.dark-mode .section--services {
   background: #0f0f0f;
 }
 
-body.dark-mode .section--services .h-eyebrow {
-  color: var(--accent);
-}
-
 body.dark-mode .section--services .h2 {
   color: var(--n-900);
 }
@@ -2604,7 +2600,7 @@ body.dark-mode .list-check strong {
 }
 
 body.dark-mode .h-eyebrow {
-  color: var(--n-500);
+  color: var(--accent);
 }
 
 body.dark-mode .paragraph,
@@ -2614,7 +2610,7 @@ body.dark-mode .lead {
 
 /* Dark Mode - Stats/Benefits */
 body.dark-mode .stat-item__icon {
-  background: rgba(34, 192, 138, 0.15);
+  background: #0F0F0F;
 }
 
 body.dark-mode .stat-item__label {
@@ -2739,11 +2735,11 @@ body.dark-mode .section--location {
 }
 
 body.dark-mode .coverage-item i {
-  background: rgba(34, 192, 138, 0.15);
+  background: #0F0F0F;
 }
 
 body.dark-mode .list-check i {
-  background: rgba(34, 192, 138, 0.2);
+  background: #0F0F0F;
 }
 
 /* Dark Mode - CTA Section */
