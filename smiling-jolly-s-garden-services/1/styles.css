@@ -534,7 +534,7 @@ button {
 }
 
 .header__logo-img {
-  height: 45px;
+  height: 35px;
   width: auto;
 }
 
@@ -1981,7 +1981,7 @@ body.tall-header .header__nav-bar {
 }
 
 .footer__logo-img {
-  height: 60px;
+  height: 35px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
