@@ -66,7 +66,7 @@
   --font-headings: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --font-sans: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   --fw-heading: 700;
-  --fs-hero: 6868px;
+  --fs-hero: 68px;
   --fs-hero-subtitle: 26px;
   --fs-xxl: 48px;
   --fs-xl: 36px;
@@ -534,7 +534,7 @@ button {
 }
 
 .header__logo-img {
-  height: 76px;
+  height: 73px;
   width: auto;
 }
 
