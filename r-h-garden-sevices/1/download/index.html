@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Website Files - R&H Garden Sevices</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      color: #1a202c;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #718096;
+    }
+
+    .business-name {
+      background: #f7fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .business-name-label {
+      font-size: 12px;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .business-name-value {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .error {
+      color: #e53e3e;
+      font-size: 14px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .error.show {
+      display: block;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: #718096;
+      line-height: 1.6;
+    }
+
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+
+    .spinner.show {
+      display: block;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      color: #38a169;
+      font-size: 16px;
+      margin-top: 16px;
+    }
+
+    .success.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Download Website Files</h1>
+      <p>Download your website files for self-hosting</p>
+    </div>
+
+    <div class="business-name">
+      <div class="business-name-label">Business Name</div>
+      <div class="business-name-value">R&H Garden Sevices</div>
+    </div>
+
+    <form id="downloadForm">
+      <div class="form-group">
+        <label for="password">Enter the business name above to download:</label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Enter business name..."
+          autocomplete="off"
+          required
+        >
+        <div class="error" id="error">Incorrect business name. Please try again.</div>
+      </div>
+
+      <button type="submit" id="submitBtn">
+        <span id="btnText">Download Files</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+
+      <div class="success" id="success">✓ Download started!</div>
+      <div class="success" id="preparing" style="display: none; color: #667eea;">Preparing download... This may take 1-2 minutes.</div>
+    </form>
+
+    <div class="footer">
+      <p>This will download a ZIP file containing index.html, styles.css, script.js, and all images.<br>Upload these files to your hosting provider to publish your website.</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    const correctPassword = 'R&H Garden Sevices'.toLowerCase().trim();
+    const form = document.getElementById('downloadForm');
+    const passwordInput = document.getElementById('password');
+    const errorMsg = document.getElementById('error');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const successMsg = document.getElementById('success');
+    const preparingMsg = document.getElementById('preparing');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const userInput = passwordInput.value.toLowerCase().trim();
+
+      if (userInput !== correctPassword) {
+        errorMsg.classList.add('show');
+        passwordInput.style.borderColor = '#e53e3e';
+        return;
+      }
+
+      // Correct password - start download
+      errorMsg.classList.remove('show');
+      passwordInput.style.borderColor = '#48bb78';
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      spinner.classList.add('show');
+      preparingMsg.style.display = 'block';
+
+      try {
+        await downloadFiles();
+        preparingMsg.style.display = 'none';
+        successMsg.classList.add('show');
+        setTimeout(() => {
+          btnText.style.display = 'block';
+          spinner.classList.remove('show');
+          submitBtn.disabled = false;
+          successMsg.classList.remove('show');
+          form.reset();
+          passwordInput.style.borderColor = '#e2e8f0';
+        }, 3000);
+      } catch (error) {
+        console.error('Download error:', error);
+        alert('Error creating download. Please try again or contact support.');
+        btnText.style.display = 'block';
+        spinner.classList.remove('show');
+        preparingMsg.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    });
+
+    async function downloadFiles() {
+      const zip = new JSZip();
+
+      // Fetch all files
+      const files = [
+        { name: 'index.html', url: '../index.html' },
+        { name: 'styles.css', url: '../styles.css' },
+        { name: 'script.js', url: '../script.js' }
+      ];
+
+      // Fetch and add main files to zip
+      for (const file of files) {
+        try {
+          const response = await fetch(file.url);
+          const content = await response.text();
+          zip.file(file.name, content);
+        } catch (error) {
+          console.error(`Error fetching ${file.name}:`, error);
+        }
+      }
+
+      // Fetch and add images
+      const imageFiles = ["portfolio-placeholder.jpg","logo.png","hero.jpg","about.jpg","whyUs.jpg","service1.jpg","service2.jpg","service3.jpg"];
+      if (imageFiles.length > 0) {
+        const imagesFolder = zip.folder('images');
+
+        for (const imageName of imageFiles) {
+          try {
+            // Images are stored at /r-h-garden-sevices/images/ not /r-h-garden-sevices/1/images/
+            const imgResponse = await fetch(`../../images/${imageName}`);
+            if (imgResponse.ok) {
+              const blob = await imgResponse.blob();
+              imagesFolder.file(imageName, blob);
+            }
+          } catch (error) {
+            console.error(`Error fetching image ${imageName}:`, error);
+          }
+        }
+      }
+
+      // Generate and download zip
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'r-h-garden-sevices-template-1.zip';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Clear error on input
+    passwordInput.addEventListener('input', () => {
+      errorMsg.classList.remove('show');
+      passwordInput.style.borderColor = '#e2e8f0';
+    });
+  </script>
+</body>
+</html>
