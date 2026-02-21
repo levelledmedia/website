@@ -4,12 +4,12 @@
 
 :root {
   /* Brand colors - generated from form inputs */
-  --dark: #011c12;
-  --primary: #047147;
-  --primary-600: #046640;
-  --primary-700: #035535;
-  --accent: #0b8154;
-  --light: #d9eae3;
+  --dark: #0e0e28;
+  --primary: #3738a0;
+  --primary-600: #313290;
+  --primary-700: #292a78;
+  --accent: #4243c0;
+  --light: #e1e1f1;
   --grey: #f2f2f2;
 
   /* Neutrals */
@@ -612,7 +612,7 @@ button {
 .header__nav a {
   font-size: 16px;
   font-weight: 600;
-  color: #011c12;
+  color: #0e0e28;
   position: relative;
   padding: 0;
   transition: color 0.2s ease;
@@ -621,7 +621,7 @@ button {
 }
 
 .header__nav a:hover {
-  color: #047147;
+  color: #3738a0;
 }
 
 .header__hamburger {
@@ -2818,9 +2818,9 @@ body.dark-mode-loaded .btn {
 
 /* Color Mode - CSS variables */
 body.color-mode {
-  --color-nav-bar: #015f3b;
-  --color-btn-light: #1cbd7f;
-  --color-section-tint: #f3f8f6;
+  --color-nav-bar: #2b2c85;
+  --color-btn-light: #b1b1dd;
+  --color-section-tint: #f3f4f8;
 }
 
 /* Color Mode - Sections that use grey background get the tint instead */
@@ -2829,17 +2829,17 @@ body.color-mode .section--services,
 body.color-mode .section--portfolio,
 body.color-mode .header__nav-container,
 body.color-mode .faq-item {
-  background: #f3f8f6;
+  background: #f3f4f8;
 }
 
 body.color-mode .faq-item.active {
-  background: #f3f8f6;
+  background: #f3f4f8;
   filter: brightness(0.97);
 }
 
 /* Color Mode - Pre-footer quote form uses tint (same as other grey sections) */
 body.color-mode .section--prefooter {
-  background: #f3f8f6;
+  background: #f3f4f8;
 }
 
 /* Color Mode - Ready to Talk CTA and footer use primary color */
@@ -2935,13 +2935,13 @@ body.color-mode .dark-mode-toggle {
 
 /* Color Mode - Benefits icons: tint background, primary icon color */
 body.color-mode .stat-item__icon {
-  background: #f3f8f6;
+  background: #f3f4f8;
   color: var(--primary);
 }
 
 /* Color Mode - Styled list icons: tint background, primary icon color */
 body.color-mode .list-check i,
 body.color-mode .coverage-item i {
-  background: #f3f8f6;
+  background: #f3f4f8;
   color: var(--primary);
 }
