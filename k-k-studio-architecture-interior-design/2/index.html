@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K&amp;K STUDIO Architecture &amp; Interior Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <style id="dark-mode-init">
+        html.dark-mode-init {
+            background: #111111;
+        }
+        html.dark-mode-init body {
+            background-color: #111111 !important;
+            color: #d8d0c8 !important;
+        }
+        html.dark-mode-init .main-header {
+            background: #111111 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        html.dark-mode-init .announcement-bar {
+            background-color: #0a0a0a !important;
+        }
+    </style>
+    <script>
+        // Apply default theme mode immediately before page renders to prevent flash
+        (function() {
+            const defaultTheme = 'light';
+            const businessName = 'K&amp;K STUDIO Architecture &amp; Interior Design';
+            const storageKey = 'siteTheme_' + businessName.replace(/[^a-zA-Z0-9]/g, '_');
+
+            const isPreview = window.location.pathname.includes('/websites/');
+
+            let savedMode = localStorage.getItem(storageKey);
+
+            if (isPreview && savedMode !== null) {
+                localStorage.removeItem(storageKey);
+                savedMode = null;
+            }
+
+            let activeMode = defaultTheme;
+
+            if (savedMode !== null) {
+                activeMode = savedMode;
+            } else {
+                if (!isPreview) {
+                    localStorage.setItem(storageKey, activeMode);
+                }
+            }
+
+            if (activeMode === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+                document.documentElement.classList.add('dark-mode-init');
+            } else if (activeMode === 'color') {
+                document.documentElement.classList.add('color-mode');
+            }
+
+            if (activeMode === 'dark' || activeMode === 'color') {
+                const applyBodyClass = () => {
+                    if (activeMode === 'dark') document.body.classList.add('dark-mode');
+                    if (activeMode === 'color') document.body.classList.add('color-mode');
+                };
+                if (document.body) {
+                    applyBodyClass();
+                } else {
+                    document.addEventListener('DOMContentLoaded', applyBodyClass);
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container">
+            <span>Your local choice for reliable, friendly, and high-quality architecture and interior design services across London.</span>
+            <div class="announcement-links">
+                <a href="mailto:hello@kkstudio.co.uk">hello@kkstudio.co.uk</a>
+                <a href="tel:07775694299">07775 694 299</a>
+                <a href="https:&#x2F;&#x2F;www.instagram.com&#x2F;kkstudio.couk&#x2F;" target="_blank" class="social-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;61554500183056" target="_blank" class="social-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/07775694299" target="_blank" class="social-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
+                <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps&#x2F;place&#x2F;K%26K+STUDIO+Architecture+%26+Interior+Design&#x2F;@51.517571,-0.18047649999999998,14z&#x2F;data&#x3D;!4m8!1m2!2m1!1sK%26K+STUDIO+Architecture+%26+Interior+Design!3m4!1s0x48761bb5e937bb3d:0x50bad865771c5767!8m2!3d51.517571!4d-0.18047649999999998" target="_blank" class="social-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <img src="..&#x2F;images&#x2F;logo.png" alt="K&amp;K STUDIO Architecture &amp; Interior Design" class="logo">
+            <nav class="main-nav">
+                <a href="#about">ABOUT</a>
+                <a href="#why">WHY US</a>
+                <a href="#services">SERVICES</a>
+                <a href="#work">OUR WORK</a>
+                <a href="#reviews">REVIEWS</a>
+                <a href="#faqs">FAQs</a>
+            </nav>
+            <a href="#contact" class="btn-contact">GET IN TOUCH</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero constrained-wrapper">
+        <div class="hero-images">
+            <img src="images/hero.jpg" alt="K&amp;K STUDIO Architecture &amp; Interior Design" class="hero-image active">
+            <img src="images/hero.jpg" alt="K&amp;K STUDIO Architecture &amp; Interior Design" class="hero-image">
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Trusted Architects &amp; Designers Across London</h1>
+                <p class="hero-brand">K&amp;K STUDIO Architecture &amp; Interior Design</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Introduction -->
+    <section class="brand-intro constrained-wrapper fade-in-section" id="about">
+        <div class="container">
+            <div class="section-label">ABOUT US</div>
+            <div class="intro-grid">
+                <div class="intro-left">
+                    <h2>We Are K&amp;K Studio</h2>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.8; font-size: 0.95em;">Your local choice for reliable, friendly, and high-quality architecture and interior design services across London.</p>
+                    <div style="width: 60px; height: 2px; background: #3b8a73; margin-bottom: 2rem;"></div>
+                    <p>We provide architecture and interior design services throughout London and the surrounding areas. From residential refurbishments to commercial fit-outs, we create spaces that feel personal and functional.</p>
+                </div>
+                <div class="intro-center">
+                    <p>Whether you need a calming home environment, an efficient workspace, or a stylish retail setting, we deliver thoughtful design with a focus on your unique lifestyle and needs.</p>
+                    <p>Every job is completed to the highest standard, with meticulous attention to detail and clear communication. Your satisfaction is our priority, and we&#39;re proud to be a trusted choice for design in London.</p>
+                    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get in touch</button>
+                </div>
+                <div class="intro-right">
+                    <div class="video-player" id="intro-video-container">
+                        <img src="images/about.jpg" alt="K&amp;K STUDIO Architecture &amp; Interior Design">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority & Awards -->
+    <section class="awards-section constrained-wrapper fade-in-section" id="why">
+        <div class="container">
+            <div class="awards-grid">
+                <div class="awards-image">
+                    <img src="images/whyUs.jpg" alt="K&amp;K STUDIO Architecture &amp; Interior Design">
+                </div>
+                <div class="awards-content">
+                    <div class="section-label">WHY CHOOSE US</div>
+                    <h2>Your Local Architecture &amp; Interior Design Expert</h2>
+                    <p>At K&amp;K Studio, we&#39;re committed to crafting bespoke interiors that enhance your lifestyle. Our seamless integration of architecture and design sets us apart in London.</p>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0 2rem 0;">
+                        <li style="padding-left: 1.5rem; margin-bottom: 0.75rem; position: relative; line-height: 1.6;">
+                            <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                            Tailored designs reflecting your unique lifestyle
+                        </li>
+                        <li style="padding-left: 1.5rem; margin-bottom: 0.75rem; position: relative; line-height: 1.6;">
+                            <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                            Expert project management from start to finish
+                        </li>
+                        <li style="padding-left: 1.5rem; margin-bottom: 0.75rem; position: relative; line-height: 1.6;">
+                            <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                            Clear communication and transparent pricing
+                        </li>
+                        <li style="padding-left: 1.5rem; margin-bottom: 0.75rem; position: relative; line-height: 1.6;">
+                            <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                            Bespoke solutions for both residential and commercial spaces
+                        </li>
+                        <li style="padding-left: 1.5rem; margin-bottom: 0.75rem; position: relative; line-height: 1.6;">
+                            <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                            Focus on comfort and functionality in every project
+                        </li>
+                    </ul>
+                    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get in touch</button>
+
+                    <div class="awards-list">
+                        <div class="award-item">
+                            <h4>Expert Team</h4>
+                            <p>Over 20 years of experience in the interior design industry.</p>
+                        </div>
+                        <div class="award-item">
+                            <h4>Quality Guaranteed</h4>
+                            <p>100% satisfaction guarantee on every project, big or small.</p>
+                        </div>
+                        <div class="award-item">
+                            <h4>Trusted Service</h4>
+                            <p>Rated 5&#x2F;5 stars by our clients with hundreds of successes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="portfolio-section constrained-wrapper fade-in-section" id="services">
+        <div class="container">
+            <div class="section-label">WHAT WE DO</div>
+            <div class="portfolio-header">
+                <div>
+                    <h2>Our Architecture &amp; Interior Design Services</h2>
+                </div>
+            </div>
+            <div class="portfolio-grid">
+                <a href="#contact" class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="" alt="Residential Interior Design">
+                    </div>
+                    <div class="project-info">
+                        <h3>Residential Interior Design</h3>
+                        <p class="project-location">Bespoke kitchen and bathroom designs, integrated storage, and tailored joinery to enhance daily living. Our approach ensures comfort and functionality in every room.</p>
+                    </div>
+                </a>
+                <a href="#contact" class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="" alt="Commercial Interior Design">
+                    </div>
+                    <div class="project-info">
+                        <h3>Commercial Interior Design</h3>
+                        <p class="project-location">Creating inviting offices, shops, and hospitality spaces that reflect your brand identity and enhance user experience. We focus on aesthetics and functionality to support daily operations.</p>
+                    </div>
+                </a>
+                <a href="#contact" class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="" alt="Project Management">
+                    </div>
+                    <div class="project-info">
+                        <h3>Project Management</h3>
+                        <p class="project-location">Overseeing the entire build process, managing timelines, budgets, and quality control for seamless project delivery. Our expertise ensures a smooth progression from concept to completion.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta constrained-wrapper fade-in-section">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Ready to Talk?</h2>
+            <p style="margin-bottom: 2.5rem; opacity: 0.9;">If you&#39;re ready to discuss how we can help with your project, contact us today and get a free, no-obligation quotation.</p>
+            <div class="cta-buttons">
+                <a href="tel:07775694299" class="btn-primary">07775 694 299</a>
+                <a href="#contact" class="btn-secondary">GET IN TOUCH</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="services-section constrained-wrapper fade-in-section" id="work">
+        <div class="container">
+            <div class="section-label">OUR WORK</div>
+            <div class="services-grid" id="portfolioCarousel">
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 1">
+                </div>
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 2">
+                </div>
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 3">
+                </div>
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 4">
+                </div>
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 5">
+                </div>
+                <div class="service-card">
+                    <img src="..&#x2F;images&#x2F;portfolio-placeholder.jpg" alt="Portfolio placeholder 6">
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; margin-top: 2rem; gap: 1rem;">
+                <button class="btn-ghost" onclick="portfolioPrev()" style="padding: 1rem 2rem; font-size: 1.2rem;">←</button>
+                <button class="btn-ghost" onclick="portfolioNext()" style="padding: 1rem 2rem; font-size: 1.2rem;">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="video-section constrained-wrapper fade-in-section" id="areas">
+        <div class="container">
+            <div class="video-grid">
+                <div class="video-content">
+                    <div class="section-label">LOCATION</div>
+                    <h2>Service Areas</h2>
+                    <p>K&amp;K Studio provides comprehensive architecture and interior design services throughout London, ensuring every project reflects our clients&#39; unique styles and needs.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; margin: 1.5rem 0 2rem 0;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Westminster
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Kensington
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Chelsea
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Camden
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Islington
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Southwark
+                            </li>
+                        </ul>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Tower Hamlets
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Hackney
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Lambeth
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Bromley
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Wandsworth
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.5rem; position: relative; line-height: 1.6;">
+                                <span style="position: absolute; left: 0; color: #3b8a73; font-weight: 600;">•</span>
+                                Hammersmith
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get in touch</button>
+                </div>
+                <div class="video-player" style="min-height: 600px;">
+                    <iframe
+                        src="https:&#x2F;&#x2F;www.google.com&#x2F;maps&#x2F;embed?pb&#x3D;!1m18!1m12!1m3!1d3000!2d-0.1804765!3d51.517571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x50bad865771c5767!2sK%26K%20STUDIO%20Architecture%20%26%20Interior%20Design!5e0!3m2!1sen!2sus!4v1773309820941"
+                        width="100%"
+                        height="100%"
+                        style="border:0; min-height: 600px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section constrained-wrapper fade-in-section" id="reviews">
+        <div class="container">
+            <div class="section-label">FEEDBACK AND FEATURES</div>
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Great service."</p>
+                    <p class="testimonial-source">Huw Wardrope</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">""</p>
+                    <p class="testimonial-source">Selcuk L</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="instagram-section constrained-wrapper fade-in-section" id="faqs" style="background-color: white; padding-top: 5rem;">
+        <div class="container">
+            <div class="section-label" style="text-align: center;">FAQs</div>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What services does K&amp;K STUDIO Architecture &amp; Interior Design provide?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">We offer architecture and interior design services for residential and commercial spaces, including full refurbishments, layouts, finishes, and styling.</p>
+                </details>
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Where are you located and what areas do you serve?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">We&#39;re based in London at 2 Eastbourne Terrace, W2 6LG, and serve clients across London and surrounding areas.</p>
+                </details>
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What are the operating hours for K&amp;K STUDIO Architecture &amp; Interior Design?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">We&#39;re typically available Monday to Saturday, 8am-6pm. Contact us to discuss your schedule and we&#39;ll do our best to accommodate.</p>
+                </details>
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Do you offer free quotes or estimates?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">Yes! We offer free, no-obligation quotes. Simply call us or fill out the contact form and we&#39;ll provide a transparent estimate for your project.</p>
+                </details>
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>What makes K&amp;K STUDIO Architecture &amp; Interior Design different to other architecture companies?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">We pride ourselves on thoughtful design, clear communication, and a smooth process from start to finish. Our focus on creating personal, functional spaces sets us apart.</p>
+                </details>
+                <details style="border-bottom: 1px solid #e5e5e5; padding: 1.5rem 0;">
+                    <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>How do I get in contact with you?</span>
+                        <span style="color: #3b8a73; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <p style="padding-top: 1.5rem; color: #666; line-height: 1.6; text-align: left;">You can reach us by calling +44 7775 694299, emailing hello@kkstudio.co.uk, or filling out the contact form on our website. We aim to respond to all inquiries within 24 hours.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section constrained-wrapper fade-in-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-label">CONTACT US</div>
+                    <h2>Get A Free Quote</h2>
+                    <p>Fill out the form below and we&#39;ll get back to you with a competitive quote.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <h4>Phone</h4>
+                            <p>07775 694 299</p>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>hello@kkstudio.co.uk</p>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Address</h4>
+                            <p>2 Eastbourne Terrace, London W2 6LG, United Kingdom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="hidden" name="client_id" value="">
+                        <input type="hidden" name="business_name" value="K&amp;K STUDIO Architecture &amp; Interior Design">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service">
+                                <option value="">Please select...</option>
+                                <option value="agricultural">Agricultural Fencing</option>
+                                <option value="security">Security & Commercial Fencing</option>
+                                <option value="maintenance">Grounds Maintenance</option>
+                                <option value="clearance">Land Clearance</option>
+                                <option value="consultation">Initial Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="..&#x2F;images&#x2F;logo.png" alt="K&amp;K STUDIO Architecture &amp; Interior Design" class="footer-logo" style="filter: brightness(0) invert(1);">
+                </div>
+                <div class="footer-contact">
+                    <p><strong>Phone:</strong><br>07775 694 299</p>
+                    <p><strong>Email:</strong><br>hello@kkstudio.co.uk</p>
+                    <p><strong>Address:</strong><br>2 Eastbourne Terrace, London W2 6LG, United Kingdom</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#why">Why Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#work">Our Work</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social-col">
+                    <h4>Follow Us</h4>
+                    <div class="footer-social">
+                        <a href="https:&#x2F;&#x2F;www.instagram.com&#x2F;kkstudio.couk&#x2F;" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            Instagram
+                        </a>
+                        <a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;61554500183056" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Facebook
+                        </a>
+                        <a href="https://wa.me/07775694299" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <a href="https:&#x2F;&#x2F;www.google.com&#x2F;maps&#x2F;place&#x2F;K%26K+STUDIO+Architecture+%26+Interior+Design&#x2F;@51.517571,-0.18047649999999998,14z&#x2F;data&#x3D;!4m8!1m2!2m1!1sK%26K+STUDIO+Architecture+%26+Interior+Design!3m4!1s0x48761bb5e937bb3d:0x50bad865771c5767!8m2!3d51.517571!4d-0.18047649999999998" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C7.589 0 4 3.589 4 8c0 5.25 7.313 14.438 7.625 14.813.188.218.469.375.781.375s.594-.157.781-.375C13.5 22.438 20 13.25 20 8c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                            </svg>
+                            Google
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <div class="container">
+                <div class="footer-legal-grid">
+                    <div class="footer-legal-left">
+                        <p>K&amp;K STUDIO Architecture &amp; Interior Design</p>
+                        <p>2 Eastbourne Terrace, London W2 6LG, United Kingdom</p>
+                    </div>
+                    <div class="footer-legal-right">
+                        <p>Copyright © 2026 K&amp;K STUDIO Architecture &amp; Interior Design - All rights reserved.</p>
+                        <p><a href="#terms">Terms & Conditions</a> | <a href="#privacy">Privacy Policy</a> | <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="dark-mode-toggle__icon dark-mode-toggle__icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
