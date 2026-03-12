@@ -760,4 +760,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // ========================================
+  // Quote Form Handler
+  // ========================================
+  // Use distinct variable names to avoid conflict with the earlier animation `quoteForm` constant.
+  const quoteFormElement = document.getElementById('quoteForm');
+  const formMessageElement = document.getElementById('formMessage');
+
+  if (quoteFormElement && formMessageElement) {
+    // Set form timestamp when page loads
+    const timestampInput = document.getElementById('formTimestamp');
+    if (timestampInput) {
+      timestampInput.value = Date.now();
+    }
+
+    quoteFormElement.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitButton = quoteFormElement.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+      const originalButtonText = submitButton.textContent;
+
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      formMessageElement.textContent = '';
+      formMessageElement.className = 'form-message';
+
+      try {
+        const formData = new FormData(quoteFormElement);
+        const response = await fetch(quoteFormElement.action, {
+          method: 'POST',
+          body: new URLSearchParams(formData),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          formMessageElement.textContent = 'Thank you! We\'ll be in touch soon.';
+          formMessageElement.className = 'form-message form-message--success';
+          quoteFormElement.reset();
+
+          // Reset timestamp for potential resubmission
+          if (timestampInput) {
+            timestampInput.value = Date.now();
+          }
+        } else {
+          formMessageElement.textContent = 'Something went wrong. Please try again or call us directly.';
+          formMessageElement.className = 'form-message form-message--error';
+        }
+      } catch (error) {
+        formMessageElement.textContent = 'Network error. Please check your connection and try again.';
+        formMessageElement.className = 'form-message form-message--error';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
+
 });
