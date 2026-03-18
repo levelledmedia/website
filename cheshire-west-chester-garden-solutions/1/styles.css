@@ -735,7 +735,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: #040d0b99;
+  background: #040d0bbf;
 }
 
 .hero__content {
